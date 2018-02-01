@@ -24,6 +24,33 @@ export default function ansibleRoutes($stateProvider) {
       }
     })
 
+    .state('appstore.pythonManagement', {
+      url: 'applications/',
+      // template: '<python-management-create/>',
+      template: '<python-management-create-container/>',
+      data: {
+        pageTitle: gettext('Applications'),
+        sidebarState: 'project.resources',
+        feature: 'pythonManagement'
+      }
+    })
+
+    .state('project.resources.pythonManagement', {
+      url: 'applications/',
+      template: '<ui-view/>',
+      abstract: true,
+    })
+
+    .state('project.resources.pythonManagement.details', {
+      url: ':pythonManagementUuid/',
+      template: '<python-management-details-container/>',
+      data: {
+        pageTitle: gettext('Python Management details'),
+        pageClass: 'gray-bg',
+        feature: 'pythonManagement',
+      }
+    })
+
     .state('project.resources.ansible', {
       url: 'applications/',
       template: '<ui-view/>',
